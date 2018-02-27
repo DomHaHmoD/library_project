@@ -1,4 +1,4 @@
-package library_project;
+package com.cesi.library_project.table;
 
 /**
  *

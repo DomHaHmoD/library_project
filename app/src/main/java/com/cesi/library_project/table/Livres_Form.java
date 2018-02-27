@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package library_project;
+package com.cesi.library_project.table;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -227,7 +227,7 @@ public class Livres_Form extends javax.swing.JFrame {
         jButton_Insert.setBackground(new java.awt.Color(255, 255, 255));
         jButton_Insert.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_Insert.setForeground(new java.awt.Color(0, 102, 0));
-        jButton_Insert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        jButton_Insert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/cesi/resources/add.png"))); // NOI18N
         jButton_Insert.setText("INSERT");
         jButton_Insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +238,7 @@ public class Livres_Form extends javax.swing.JFrame {
         jButton_Update.setBackground(new java.awt.Color(255, 255, 255));
         jButton_Update.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_Update.setForeground(new java.awt.Color(0, 102, 204));
-        jButton_Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/upd.png"))); // NOI18N
+        jButton_Update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/cesi/resources/upd.png"))); // NOI18N
         jButton_Update.setText("UPDATE");
         jButton_Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +249,7 @@ public class Livres_Form extends javax.swing.JFrame {
         jButton_Delete.setBackground(new java.awt.Color(255, 255, 255));
         jButton_Delete.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_Delete.setForeground(new java.awt.Color(255, 0, 0));
-        jButton_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/del.png"))); // NOI18N
+        jButton_Delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/cesi/resources/del.png"))); // NOI18N
         jButton_Delete.setText("DELETE");
         jButton_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +286,7 @@ public class Livres_Form extends javax.swing.JFrame {
         });
 
         jButton_Search.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jButton_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jButton_Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/cesi/resources/search.png"))); // NOI18N
         jButton_Search.setText("SEARCH");
         jButton_Search.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), null));
         jButton_Search.addActionListener(new java.awt.event.ActionListener() {
@@ -395,7 +395,7 @@ public class Livres_Form extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 3, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/dubs/NetBeansProjects/Library_Project_Java_Alex/src/images/Livre.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/com/cesi/resources/thumbnail_book.png")); // NOI18N
         jLabel1.setText("LIVRES");
 
         jTextArea_Commentaire.setColumns(20);

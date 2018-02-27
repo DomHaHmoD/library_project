@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package library_project;
+package com.cesi.library_project.table;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -18,7 +19,8 @@ import javax.swing.table.TableModel;
  *
  * @author dubs
  */
-public class Main_Form extends javax.swing.JFrame {
+//public class Main_Form extends javax.swing.JFrame {
+public class Main_Form extends JPanel {
 
     private Statement state = Connexion.Connect().createStatement();
     String requete;
@@ -146,7 +148,7 @@ public class Main_Form extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_MainOeuvres = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); // comment to insert in SWT
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -261,8 +263,9 @@ public class Main_Form extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new javax.swing.GroupLayout(this);
+        //getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -274,7 +277,7 @@ public class Main_Form extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        //pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_MainSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MainSearchActionPerformed

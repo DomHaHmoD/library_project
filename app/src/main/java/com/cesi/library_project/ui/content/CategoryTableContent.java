@@ -6,6 +6,7 @@ import com.cesi.library_project.database.models.IIdSetter;
 import com.cesi.library_project.providers.AbstractProvider;
 import com.cesi.library_project.providers.Providers;
 import com.cesi.library_project.providers.ui.AbstractComponentProvider;
+import com.cesi.library_project.table.Main_Form;
 import com.cesi.library_project.tableau.OeuvreForm;
 import com.cesi.library_project.ui.DisplayController;
 import com.cesi.library_project.ui.IComponentProvider;
@@ -86,7 +87,8 @@ public class CategoryTableContent implements IComponentProvider, AbstractControl
 
             try {
                 try {
-                    frame.add(new OeuvreForm ());
+                    //frame.add(new OeuvreForm ()); // call old tableau
+                    frame.add(new Main_Form ());
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace ();
                 }
