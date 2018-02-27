@@ -6,6 +6,7 @@ import com.cesi.library_project.database.models.IIdSetter;
 import com.cesi.library_project.providers.ui.AbstractComponentProvider;
 import org.eclipse.swt.internal.mozilla.IIDStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractProvider<MODEL extends IIdSetter,
@@ -13,6 +14,7 @@ public abstract class AbstractProvider<MODEL extends IIdSetter,
         TABLE_CONTROLLER extends AbstractController<MODEL>,
         FORM_COMPONENT_PROVIDER extends AbstractComponentProvider<MODEL>> {
 
+    public static ArrayList[] mObject;
     private TABLE_CONTROLLER mController;
 
     protected AbstractProvider() {
