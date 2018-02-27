@@ -94,7 +94,7 @@ public class CategoryMenu implements IComponentProvider, ICategoryClicked {
         temp_composite.setLayout(layout);
 
         Label title = new Label(temp_composite, SWT.NONE);
-        title.setText("Main categories");
+        title.setText("Choix par Categorie");
         title.setForeground(DisplayController.getInstance()
                 .getColor(120, 120, 120));
 
@@ -107,6 +107,11 @@ public class CategoryMenu implements IComponentProvider, ICategoryClicked {
             item.implement(mComposite);
         }
 
+        // add a separator lign
+        Label separator = new Label(mComposite, SWT.HORIZONTAL | SWT.SEPARATOR);
+        separator.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+            // create the second menu (by thumbnail or list)
         temp_composite = new Composite(mComposite, SWT.NONE);
         layout = new RowLayout(SWT.VERTICAL);
         layout.marginTop = 12;
@@ -114,13 +119,41 @@ public class CategoryMenu implements IComponentProvider, ICategoryClicked {
         temp_composite.setLayout(layout);
 
         Label display_format = new Label(temp_composite, SWT.NONE);
-        display_format.setText("Display format");
+        display_format.setText("Type de format");
         display_format.setForeground(DisplayController.getInstance()
                 .getColor(120, 120, 120));
 
         CategoryThumbnail[] formats = new CategoryThumbnail[]{
-                new CategoryThumbnail("Thumbnail", Format.THUMBNAIL),
-                new CategoryThumbnail("List", Format.LIST)
+                new CategoryThumbnail("Vignette", Format.THUMBNAIL),
+                new CategoryThumbnail("Table", Format.LIST)
+        };
+
+
+        for (CategoryThumbnail category : formats) {
+            category.setCategoryParent(this);
+            mCategoriesItem.add(category);
+            category.implement(mComposite);
+        }
+
+        // add a separator lign
+        Label separator2 = new Label(mComposite, SWT.HORIZONTAL | SWT.SEPARATOR);
+        separator2.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+
+        // create the third menu (rapport)
+        temp_composite = new Composite(mComposite, SWT.NONE);
+        layout = new RowLayout(SWT.VERTICAL);
+        layout.marginTop = 12;
+        layout.marginBottom = layout.marginLeft = 6;
+        temp_composite.setLayout(layout);
+
+        Label display_format2 = new Label(temp_composite, SWT.NONE);
+        display_format2.setText("Information additionnelle");
+        display_format2.setForeground(DisplayController.getInstance()
+                .getColor(120, 120, 120));
+
+        formats = new CategoryThumbnail[]{
+                new CategoryThumbnail ("Rapport", Format.RAPPORT),
+                //new CategoryThumbnail ("Table", Format.LIST)
         };
 
 

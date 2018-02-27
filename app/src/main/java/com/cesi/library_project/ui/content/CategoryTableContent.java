@@ -6,6 +6,7 @@ import com.cesi.library_project.database.models.IIdSetter;
 import com.cesi.library_project.providers.AbstractProvider;
 import com.cesi.library_project.providers.Providers;
 import com.cesi.library_project.providers.ui.AbstractComponentProvider;
+import com.cesi.library_project.tableau.OeuvreForm;
 import com.cesi.library_project.ui.DisplayController;
 import com.cesi.library_project.ui.IComponentProvider;
 import com.cesi.library_project.ui.scroll.ScrollContent;
@@ -22,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +84,17 @@ public class CategoryTableContent implements IComponentProvider, AbstractControl
 
             java.awt.Frame frame = SWT_AWT.new_Frame(mChildComposite);
 
-            Object[][] data = new Object[rows.size()][];
+            try {
+                try {
+                    frame.add(new OeuvreForm ());
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace ();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            /*Object[][] data = new Object[rows.size()][];
             int i = 0;
             for(Object[] object : rows) {
                 data[i++] = object;
@@ -91,8 +103,8 @@ public class CategoryTableContent implements IComponentProvider, AbstractControl
             if(columnNames != null) {
                 JTable table = new JTable(data, columnNames);
                 frame.add(table);
-                frame.add(new JPanel())
-            }
+                frame.add(new JPanel());
+            }*/
         }
     }
 

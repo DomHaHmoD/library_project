@@ -77,10 +77,17 @@ public class MainContent implements IComponentProvider, ICategoryClicked {
                 mCategoryTableContent.resize();
                 break;
             case THUMBNAIL:
+                mCategoryContent = new CategoryListContent(category);
+                mCategoryContent.implement(mContent);
+                mCategoryContent.resize();
+                break;
+            case RAPPORT:
+
             default:
                 mCategoryContent = new CategoryListContent(category);
                 mCategoryContent.implement(mContent);
                 mCategoryContent.resize();
+                break;
         }
     }
 }

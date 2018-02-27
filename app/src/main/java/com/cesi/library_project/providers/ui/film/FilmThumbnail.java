@@ -41,7 +41,7 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> {
         mComposite.setLayout(layout);
 
         mImage = DisplayController.getInstance()
-                .loadImage("/com/cesi/resources/heroes.png", 150);
+                .loadImage("/com/cesi/resources/thumbnail_video.png", 150);
 
         Label label = new Label(mComposite, SWT.NONE);
         label.setImage(mImage);

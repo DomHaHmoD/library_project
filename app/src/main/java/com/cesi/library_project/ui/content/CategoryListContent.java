@@ -82,9 +82,11 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
                 AbstractComponentProvider<IIdSetter> component = provider.getThumbnailProvider(object);
                 component.implement(mChildComposite);
             }
-
+            /**
+             * Button to add a new thumbnail
+             */
             Button button = new Button(mChildComposite, SWT.PUSH);
-            button.setText("Add a new element");
+            button.setText("Ajouter une nouvelle oeuvre");
             button.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseDoubleClick(MouseEvent mouseEvent) {
