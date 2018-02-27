@@ -132,14 +132,6 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
                 Shell shell = new Shell(DisplayController.getInstance().getDisplay(),
                         SWT.SHELL_TRIM);
 
-                /*GridLayout layout = new GridLayout(1, true);
-                layout.horizontalSpacing = layout.verticalSpacing = 0;
-                layout.marginTop = layout.marginBottom = 0;
-                layout.marginLeft = layout.marginRight = 0;
-                layout.marginWidth = layout.marginHeight = 0;
-                shell.setLayout(layout);*/
-
-
                 //mComposite = new Composite(shell, SWT.NONE);
                 //mComposite.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
 
@@ -169,20 +161,26 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
                 Label textname = new Label(shell, SWT.BEGINNING);
                 textname.setText ("Titre");
                 Text name = new Text(shell, SWT.BORDER);
+                name.setText(getModel().getMetaData ().getTitle ());
                 name.setSize (100, 20);
                 //input field duration
                 Label textduration = new Label(shell, SWT.FILL);
                 textduration.setText ("Duree");
                 Text duration = new Text(shell, SWT.BORDER);
+                String convertduration = String.valueOf(getModel().getDuration());
+                duration.setText(convertduration);
                 //input field note
                 Label textnote = new Label(shell, SWT.FILL);
                 textnote.setText ("Note");
                 Text note = new Text(shell, SWT.BORDER);
+                String convertnote = Integer.toString(getModel().getMetaData().getNote());
+                note.setText(convertnote);
                 //input field comments
                 Label textcomment = new Label(shell, SWT.FILL);
                 textcomment.setText ("Commentaire");
                 Text comment = new Text(shell, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
                 comment.setSize (200,200);
+                comment.setText(getModel().getMetaData ().getCommentaire ());
 
                 Button buttonSubmit = new Button(shell, SWT.PUSH);
                 buttonSubmit.setText("Valider votre saisie");
@@ -218,13 +216,14 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
                         System.out.println ("duration:" + duration1);
                         Music music = new Music(duration1, metaData);
                         MusicController.getInstance()
-                                .create(music);
+                                .update(music);
                         //TODO create new metadata from inputs
                         //TODO insert new metadata
                         //TODO create new music
                         //TODO insert new music
 
-                        composite.dispose (); // add to close the Form Windows
+                        //composite.dispose (); // add to close the Form Windows
+                        shell.dispose (); // add to close the Form Windows
 
                     }
                 });

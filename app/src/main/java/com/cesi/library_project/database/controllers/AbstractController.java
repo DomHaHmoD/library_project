@@ -130,11 +130,26 @@ public abstract class AbstractController<A_MODEL_CLASS extends IIdSetter> implem
     @Override
     public void update(@NotNull A_MODEL_CLASS model) {
         try {
-            mProvider.update(model);
+            /*mProvider.update(model);
+
+            for (IModificationListener listener : mListeners) {
+                listener.onUpdate(model);
+            }*/
+
+            list();
+            long id = mProvider.insert(model);
+            System.out.println("saving in " + id + " " + model.getClass().getSimpleName());
+            if (id > 0) {
+                model.setId(id);
+                mCache.add(model);
+                mCacheIndex.put(model.getId(), model);
+            }
 
             for (IModificationListener listener : mListeners) {
                 listener.onUpdate(model);
             }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

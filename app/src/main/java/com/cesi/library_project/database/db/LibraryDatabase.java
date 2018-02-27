@@ -64,7 +64,7 @@ public class LibraryDatabase extends DatabaseModel<ResultSet, HashMap<String, Ob
                 new Category("Film", "k", false, Film.class.getSimpleName()),
                 new Category("Musique", "o", false, Music.class.getSimpleName()),
                 new Category("Livre", "m", false, null),
-                new Category("Jeux-Vidéo", "n", false, null)
+                new Category("Jeux-Video", "n", false, null)
         };
 
         MetaData meta_data = new MetaData("Une metadata",
