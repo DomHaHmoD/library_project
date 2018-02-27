@@ -136,9 +136,9 @@ public abstract class AbstractController<A_MODEL_CLASS extends IIdSetter> implem
                 listener.onUpdate(model);
             }*/
 
-            list();
+            //list();
             long id = mProvider.insert(model);
-            System.out.println("saving in " + id + " " + model.getClass().getSimpleName());
+            System.out.println("updating in " + id + " " + model.getClass().getSimpleName());
             if (id > 0) {
                 model.setId(id);
                 mCache.add(model);

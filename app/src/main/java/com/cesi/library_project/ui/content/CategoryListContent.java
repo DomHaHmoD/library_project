@@ -78,7 +78,7 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
 
             for (IIdSetter object : list) {
 
-                System.out.println(object.toString());
+                System.out.println("CategoryListContent" + object.toString());
                 AbstractComponentProvider<IIdSetter> component = provider.getThumbnailProvider(object);
                 component.implement(mChildComposite);
             }

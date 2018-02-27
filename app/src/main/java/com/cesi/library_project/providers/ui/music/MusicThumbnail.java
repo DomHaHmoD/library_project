@@ -3,14 +3,12 @@ package com.cesi.library_project.providers.ui.music;
 import com.cesi.library_project.database.controllers.AbstractController;
 import com.cesi.library_project.database.controllers.MetaDataController;
 import com.cesi.library_project.database.controllers.MusicController;
-import com.cesi.library_project.database.models.Film;
-import com.cesi.library_project.database.models.IIdSetter;
-import com.cesi.library_project.database.models.MetaData;
-import com.cesi.library_project.database.models.Music;
+import com.cesi.library_project.database.models.*;
 import com.cesi.library_project.providers.AbstractProvider;
 import com.cesi.library_project.providers.MusicProvider;
 import com.cesi.library_project.providers.ui.AbstractComponentProvider;
 import com.cesi.library_project.ui.DisplayController;
+import com.cesi.library_project.ui.content.CategoryListContent;
 import com.cesi.library_project.ui.listeners.IThumbnailClicked;
 import com.cesi.library_project.utils.Fonts;
 import org.eclipse.swt.SWT;
@@ -37,6 +35,10 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
     private MusicProvider provider;
     private Music MUSIC;
     private Object parent;
+    private CategoryListContent mCategoryContent;
+    private Category category;
+    private Composite mContent;
+
 
 
     public MusicThumbnail(Music object) {
@@ -120,7 +122,6 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
             public void mouseUp(MouseEvent mouseEvent) {
                 System.out.println ("click" + text);
 
-
                 String title2 = getModel().getMetaData().getTitle();
 
                 List<Object> list = new ArrayList<> ();
@@ -155,8 +156,15 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
                  * Form for the music
                  * **/
                 Label textvide = new Label(shell, SWT.FILL);
-                textvide.setText(" Formulaire de saisie des informations pour la musique ");
+                textvide.setText("Fiche information pour la musique ");
 
+                    //input field id
+                Label textid = new Label(shell, SWT.BEGINNING);
+                textid.setText ("Id");
+                Text id = new Text(shell, SWT.BORDER);
+                String convertid = String.valueOf(getModel().getId ());
+                id.setText(convertid);
+                id.setSize (100, 20);
                 //input field name
                 Label textname = new Label(shell, SWT.BEGINNING);
                 textname.setText ("Titre");
@@ -214,22 +222,29 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
                         // modify to convert TextField in int for duration
                         int duration1 = new Integer(String.valueOf (duration.getText()));
                         System.out.println ("duration:" + duration1);
+
+                        //int id1 = new Integer(String.valueOf (id));
+                        //System.out.println ("id:" + id1);
+
                         Music music = new Music(duration1, metaData);
-                        MusicController.getInstance()
-                                .update(music);
+                        MusicController.getInstance().update(music);
                         //TODO create new metadata from inputs
                         //TODO insert new metadata
                         //TODO create new music
                         //TODO insert new music
 
-                        //composite.dispose (); // add to close the Form Windows
-                        shell.dispose (); // add to close the Form Windows
+                        // add to close the Form Window
+                        shell.dispose ();
+                        
+                        // TODO add to refresh
+                        //mCategoryContent = new CategoryListContent (category);
+                        //mCategoryContent.implement(mContent);
+                        //mCategoryContent.resize();
 
                     }
                 });
 
                 Button buttonCancel = new Button(shell, SWT.PUSH);
-                //buttonCancel.setText("Retour sans valider");
                 buttonCancel.setText("Retour sans valider");
                 buttonCancel.addMouseListener(new MouseListener() {
 
@@ -243,7 +258,7 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
 
                     @Override
                     public void mouseUp(MouseEvent mouseEvent) {
-                        //composite.dispose (); // add to close the Form Windows
+                        // add to close the Form Windows
                         shell.dispose (); // add to close the Form Windows
                     }
                 });
