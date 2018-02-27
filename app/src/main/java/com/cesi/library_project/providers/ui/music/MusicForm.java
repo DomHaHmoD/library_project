@@ -158,4 +158,7 @@ public class MusicForm extends AbstractComponentProvider<Music> {
     public void dispose() {
         mComposite.dispose();
     }
+
+    public void setLayoutData(GridData griddata) {
+    }
 }
