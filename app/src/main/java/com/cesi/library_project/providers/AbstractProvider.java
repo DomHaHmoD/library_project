@@ -14,7 +14,6 @@ public abstract class AbstractProvider<MODEL extends IIdSetter,
         TABLE_CONTROLLER extends AbstractController<MODEL>,
         FORM_COMPONENT_PROVIDER extends AbstractComponentProvider<MODEL>> {
 
-    public static ArrayList[] mObject;
     private TABLE_CONTROLLER mController;
 
     protected AbstractProvider() {
