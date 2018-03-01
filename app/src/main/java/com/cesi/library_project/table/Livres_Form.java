@@ -5,6 +5,8 @@
  */
 package com.cesi.library_project.table;
 
+import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +25,7 @@ public class Livres_Form extends javax.swing.JFrame {
     String requete;
     ResultSet result;
     DefaultTableModel model;
+    private Window Livre_Form;
 
     public Livres_Form() throws SQLException, ClassNotFoundException {
         initComponents();
@@ -41,15 +44,14 @@ public class Livres_Form extends javax.swing.JFrame {
                    + "LEFT JOIN langue ON langue.id = oeuvre.langue_id "
                    + "LEFT JOIN origine ON origine.id = oeuvre.origine_id "
                    + "LEFT JOIN societe ON societe.id = oeuvre.societe_id "
-                   + "LEFT JOIN TravailleComme ON TravailleComme.oeuvre_id = oeuvre.id"
+                   + "LEFT JOIN TravailleComme ON TravailleComme.id = oeuvre.TravailleComme_id "
                    + "LEFT JOIN personne ON personne.id = TravailleComme.personne_id "
                    + "LEFT JOIN profession ON profession.id = TravailleComme.profession_id "
                    + "LEFT JOIN statut ON statut.id = oeuvre.statut_id "
                    + "LEFT JOIN support ON support.id = oeuvre.support_id "
                    
-                   + "WHERE (`titre`|| `date_parution`|| `note`|| `name_personne` || `name_profession` || `name_societe` ) LIKE '%"+ValToSearch+"%' "
-                   + "AND (category_id = 2)";
-           
+               + "WHERE category.id = 2 AND (`titre`|| `date_parution`|| `note`|| `name_personne` || `name_profession` || `name_societe` ) LIKE '%"+ValToSearch+"%' ";
+
             result = state.executeQuery(livreQuery);
 
             Livre livre;
@@ -73,12 +75,13 @@ public class Livres_Form extends javax.swing.JFrame {
                         result.getString("name_support")
                 );
                 livresList.add(livre);
-
+                System.out.println ("sql livre ok");
             }
             return livresList;
 
 
         } catch (Exception ex) {
+            System.out.println ("sql livre ko");
             System.out.println(ex.getMessage());
         }
 
@@ -190,7 +193,9 @@ public class Livres_Form extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea_Commentaire = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //Livre_Form.dispatchEvent(new WindowEvent (Livre_Form, WindowEvent.WINDOW_CLOSING));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -395,7 +400,7 @@ public class Livres_Form extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 3, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("/com/cesi/resources/thumbnail_book.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/com/cesi/resources/book3.png")); // NOI18N
         jLabel1.setText("LIVRES");
 
         jTextArea_Commentaire.setColumns(20);

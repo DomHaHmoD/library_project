@@ -1,3 +1,11 @@
+/**
+ * app to manage the differents media
+ * Left aera display for he menu
+ * team = Alex Geoffroy Jean-Luc et Dominique
+ * version1.0
+ * date:01/03/2018
+ *
+ **/
 package com.cesi.library_project.ui.menu;
 
 import com.cesi.library_project.database.controllers.CategoryController;

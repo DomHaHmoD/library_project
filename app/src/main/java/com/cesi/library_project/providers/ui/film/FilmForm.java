@@ -1,43 +1,45 @@
 /**
  * app to manage the differents media
- * use to generate a form to create a new Music
+ * use to create a new Film
  * team = Alex Geoffroy Jean-Luc et Dominique
  * version1.0
  * date:01/03/2018
  *
  **/
-package com.cesi.library_project.providers.ui.music;
 
+package com.cesi.library_project.providers.ui.film;
+
+import com.cesi.library_project.database.controllers.FilmController;
 import com.cesi.library_project.database.controllers.MetaDataController;
-import com.cesi.library_project.database.controllers.MusicController;
+import com.cesi.library_project.database.controllers.FilmController;
+import com.cesi.library_project.database.models.Film;
 import com.cesi.library_project.database.models.MetaData;
-import com.cesi.library_project.database.models.Music;
+import com.cesi.library_project.database.models.Film;
 import com.cesi.library_project.providers.ui.AbstractComponentProvider;
+import com.cesi.library_project.table.Connexion;
 import com.cesi.library_project.ui.DisplayController;
-import com.cesi.library_project.ui.content.CategoryListContent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.RandomAccessFile;
-
-import static java.lang.Integer.parseInt;
-
-public class MusicForm extends AbstractComponentProvider<Music> {
+public class FilmForm extends AbstractComponentProvider<Film> {
     private Composite mComposite;
     private Image mImage;
     private String note;
     private int note1;
-
     private int note3;
+    //private Connexion shell;
 
-    public MusicForm(Music object) {
+    public FilmForm(Film object) {
         super(object);
     }
 
@@ -72,10 +74,10 @@ public class MusicForm extends AbstractComponentProvider<Music> {
         }
 
         /**
-         * Form for the music
+         * Form for the Film
          * **/
         Label textvide = new Label(mComposite, SWT.FILL);
-        textvide.setText(" Formulaire de saisie des informations pour la musique ");
+        textvide.setText(" Formulaire de saisie des informations pour la video ");
 
         //input field name
         Label textname = new Label(mComposite, SWT.BEGINNING);
@@ -114,7 +116,7 @@ public class MusicForm extends AbstractComponentProvider<Music> {
             public void mouseUp(MouseEvent mouseEvent) {
 
                 /**
-                 * code to create a new music
+                 * code to create a new film
                  **/
 
                 MetaData metaData = new MetaData();
@@ -128,13 +130,13 @@ public class MusicForm extends AbstractComponentProvider<Music> {
                 // modify to convert TextField in int for duration
                 int duration1 = new Integer(String.valueOf (duration.getText()));
                 System.out.println ("duration:" + duration1);
-                Music music = new Music(duration1, metaData);
-                MusicController.getInstance()
-                        .create(music);
+                Film film = new Film(duration1, metaData);
+                FilmController.getInstance()
+                        .create(film);
                 //TODO create new metadata from inputs
                 //TODO insert new metadata
-                //TODO create new music
-                //TODO insert new music
+                //TODO create new film
+                //TODO insert new film
 
                 composite.dispose (); // add to close the Form Windows
 
@@ -158,6 +160,7 @@ public class MusicForm extends AbstractComponentProvider<Music> {
             public void mouseUp(MouseEvent mouseEvent) {
 
                 composite.dispose (); // add to close the Form Windows
+
             }
         });
 
@@ -165,6 +168,7 @@ public class MusicForm extends AbstractComponentProvider<Music> {
 
     @Override
     public void dispose() {
+
         mComposite.dispose();
     }
 

@@ -1,3 +1,13 @@
+/**
+ * app to manage the differents media
+ * start of the app
+ * team = Alex Geoffroy Jean-Luc et Dominique
+ * version1.0
+ * date:01/03/2018
+ *
+ **/
+
+
 package com.cesi.library_project;
 
 import com.cesi.library_project.database.db.DatabaseController;

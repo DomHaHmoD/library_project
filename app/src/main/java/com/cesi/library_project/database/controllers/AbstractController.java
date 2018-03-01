@@ -130,11 +130,11 @@ public abstract class AbstractController<A_MODEL_CLASS extends IIdSetter> implem
     @Override
     public void update(@NotNull A_MODEL_CLASS model) {
         try {
-            /*mProvider.update(model);
+            mProvider.update(model);
 
             for (IModificationListener listener : mListeners) {
                 listener.onUpdate(model);
-            }*/
+            }
 
             //list();
             long id = mProvider.insert(model);

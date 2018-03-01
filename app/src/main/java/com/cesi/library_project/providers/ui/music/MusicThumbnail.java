@@ -161,7 +161,7 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> implements 
                     //input field id
                 Label textid = new Label(shell, SWT.BEGINNING);
                 textid.setText ("Id");
-                Text id = new Text(shell, SWT.BORDER);
+                Label id = new Label(shell, SWT.BORDER);
                 String convertid = String.valueOf(getModel().getId ());
                 id.setText(convertid);
                 id.setSize (100, 20);

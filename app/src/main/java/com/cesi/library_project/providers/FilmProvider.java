@@ -2,11 +2,13 @@ package com.cesi.library_project.providers;
 
 import com.cesi.library_project.database.controllers.FilmController;
 import com.cesi.library_project.database.models.Film;
+import com.cesi.library_project.providers.ui.film.FilmForm;
 import com.cesi.library_project.providers.ui.film.FilmThumbnail;
+import com.cesi.library_project.providers.ui.music.MusicForm;
 
 
 //TODO create FilmForm and replace in modify/create
-public class FilmProvider extends AbstractProvider<Film, FilmThumbnail, FilmController, FilmThumbnail>{
+public class FilmProvider extends AbstractProvider<Film, FilmThumbnail, FilmController, FilmForm>{
     @Override
     protected FilmController createController() {
         return FilmController.getInstance();
@@ -23,12 +25,12 @@ public class FilmProvider extends AbstractProvider<Film, FilmThumbnail, FilmCont
     }
 
     @Override
-    public FilmThumbnail modifyObject(Film object) {
-        return null;
+    public FilmForm modifyObject(Film object) {
+        return new FilmForm (object);
     }
 
     @Override
-    public FilmThumbnail createObject() {
-        return null;
+    public FilmForm createObject() {
+        return new FilmForm(null);
     }
 }

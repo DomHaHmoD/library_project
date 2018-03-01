@@ -1,3 +1,12 @@
+/**
+ * app to manage the differents media
+ * Right aera display, for the data (thumbnail table)
+ * team = Alex Geoffroy Jean-Luc et Dominique
+ * version1.0
+ * date:01/03/2018
+ *
+ **/
+
 package com.cesi.library_project.ui.content;
 
 import com.cesi.library_project.database.models.Category;

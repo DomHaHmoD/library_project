@@ -88,7 +88,7 @@ public class CategoryTableContent implements IComponentProvider, AbstractControl
             try {
                 try {
                     //frame.add(new OeuvreForm ()); // call old tableau
-                    frame.add(new Main_Form ());
+                    frame.add(new Main_Form ()); // call ne final table ok
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace ();
                 }

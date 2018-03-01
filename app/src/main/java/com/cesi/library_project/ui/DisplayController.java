@@ -55,7 +55,7 @@ public class DisplayController {
     }
 
     public void startApp() {
-        mShell.setSize(900, 600);
+        mShell.setSize(1600, 1000);
         mShell.setMinimumSize(300, 300);
         mShell.open();
 

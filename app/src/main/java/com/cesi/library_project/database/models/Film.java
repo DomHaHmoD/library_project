@@ -77,4 +77,9 @@ public class Film implements IMetaDataProvider, IIdSetter {
         this.meta_data_id = meta_data.getId();
         this.meta_data = meta_data;
     }
+
+    @Override
+    public String toString() {
+        return "Film " + id + " " + duration + " " + meta_data_id + " // " + getMetaData().toString();
+    }
 }

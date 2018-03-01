@@ -9,42 +9,41 @@
 
 package com.cesi.library_project.providers.ui.film;
 
-import com.cesi.library_project.database.controllers.FilmController;
-import com.cesi.library_project.database.controllers.MetaDataController;
-import com.cesi.library_project.database.controllers.FilmController;
-import com.cesi.library_project.database.models.Film;
-import com.cesi.library_project.database.models.MetaData;
-import com.cesi.library_project.database.models.Film;
-import com.cesi.library_project.providers.ui.AbstractComponentProvider;
-import com.cesi.library_project.ui.DisplayController;
-import com.cesi.library_project.ui.IComponentProvider;
-import com.cesi.library_project.ui.listeners.IThumbnailClicked;
-import com.cesi.library_project.utils.Fonts;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Device;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+        import com.cesi.library_project.database.controllers.FilmController;
+        import com.cesi.library_project.database.controllers.MetaDataController;
+        import com.cesi.library_project.database.controllers.FilmController;
+        import com.cesi.library_project.database.models.Film;
+        import com.cesi.library_project.database.models.MetaData;
+        import com.cesi.library_project.database.models.Film;
+        import com.cesi.library_project.providers.ui.AbstractComponentProvider;
+        import com.cesi.library_project.ui.DisplayController;
+        import com.cesi.library_project.ui.content.CategoryListContent;
+        import com.cesi.library_project.ui.listeners.IThumbnailClicked;
+        import com.cesi.library_project.utils.Fonts;
+        import org.eclipse.swt.SWT;
+        import org.eclipse.swt.events.MouseEvent;
+        import org.eclipse.swt.events.MouseListener;
+        import org.eclipse.swt.graphics.Color;
+        import org.eclipse.swt.graphics.Device;
+        import org.eclipse.swt.graphics.Image;
+        import org.eclipse.swt.layout.GridData;
+        import org.eclipse.swt.layout.GridLayout;
+        import org.eclipse.swt.widgets.*;
+        import org.jetbrains.annotations.NotNull;
+        import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
-public class FilmThumbnail extends AbstractComponentProvider<Film> implements IThumbnailClicked, IComponentProvider {
+public class FilmFormUpdate extends AbstractComponentProvider<Film> implements IThumbnailClicked {
 
     private Composite mComposite;
     private Image mImage;
     private boolean loaded;
     private Device display;
-    private Film film;
-    private DisplayController mChildComposite;
+    private CategoryListContent mCategoryTableContent;
 
-    public FilmThumbnail(Film object) {
+    public FilmFormUpdate(Film object) {
         super(object);
     }
 
@@ -57,83 +56,12 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> implements IT
     @Override
     public void implement(@NotNull Composite composite) {
 
-        //proxy composite to display the internal component easily
-        mComposite = new Composite(composite, SWT.NONE);
-        mComposite.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
 
-        GridLayout layout = new GridLayout(1, false);
-        layout.marginTop = layout.marginBottom = layout.marginLeft = layout.marginRight = 0;
-        layout.marginHeight = layout.marginWidth = 0;
-        layout.verticalSpacing = 6;
-        mComposite.setLayout(layout);
-
-        mImage = DisplayController.getInstance()
-                .loadImage("/com/cesi/resources/thumbnail_video.png", 150);
-
-        Label label = new Label(mComposite, SWT.NONE);
-        label.setImage(mImage);
-
-        // add title
-        GridData data = new GridData();
-        data.horizontalAlignment = SWT.CENTER;
-        Label text = new Label(mComposite, SWT.NONE);
-        if(getModel() != null)
-        text.setText(getModel().getMetaData().getTitle());
-        text.setLayoutData(data);
-
-        // to add note
-        GridData data1 = new GridData();
-        data1.horizontalAlignment = SWT.CENTER;
-        Label text1 = new Label(mComposite, SWT.NONE);
-        loaded = Fonts.getInstance ()
-                .loadFont ("/com/cesi/resources/untitled-font-1.ttf", "untitled-font-1.ttf");
-        text1.setFont(Fonts.getInstance().getFont("untitled-font-1", 12));
-
-        // Set fore color
-        Color color = new Color(display, 255, 215, 0);
-        text1.setForeground(color);
-
-        // switch to convert note in stars
-        String converttext = Integer.toString(getModel().getMetaData().getNote());
-        switch(converttext){
-            case "0" : text1.setText(" ");
-                break;
-            case "1" : text1.setText("b");
-                break;
-            case "2" : text1.setText("bb");
-                break;
-            case "3" : text1.setText("bbb");
-                break;
-            case "4" : text1.setText("bbbb");
-                break;
-            case "5" : text1.setText("bbbbb");
-                break;
-        }
-
-        text1.setLayoutData(data1);
-
-        label.addMouseListener(new MouseListener () {
-
-            @Override
-            public void mouseDoubleClick(MouseEvent mouseEvent) {
-            }
-
-            @Override
-            public void mouseDown(MouseEvent mouseEvent) {
-            }
-
-            @Override
-            public void mouseUp(MouseEvent mouseEvent) {
-                /*Shell shell = new Shell();
                 //System.out.println ("click" + text);
-                FilmFormUpdate filmformupdate = new FilmFormUpdate (film);
-                filmformupdate.implement (shell);
 
-                shell.open();*/
+                //String title2 = getModel().getMetaData().getTitle();
 
-                String title2 = getModel().getMetaData().getTitle();
-
-                List<Object> list = new ArrayList<> ();
+                //List<Object> list = new ArrayList<> ();
                 //list.add();
 
 
@@ -146,8 +74,8 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> implements IT
                 //mComposite2.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
 
                 GridLayout layout4 = new GridLayout(2, false); // 2 columns
-                layout4.marginTop = layout.marginBottom = layout.marginLeft = layout.marginRight = 0;
-                layout4.marginHeight = layout.marginWidth = 0;
+                layout4.marginTop = layout4.marginBottom = layout4.marginLeft = layout4.marginRight = 0;
+                layout4.marginHeight = layout4.marginWidth = 0;
                 layout4.verticalSpacing = 6;
                 //shell.setLayout(layout4);
                 shell.setLayout(layout4);
@@ -205,7 +133,6 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> implements IT
                 buttonSubmit.setText("Valider votre saisie");
                 buttonSubmit.addMouseListener(new MouseListener() {
 
-
                     @Override
                     public void mouseDoubleClick(MouseEvent mouseEvent) {
 
@@ -220,7 +147,7 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> implements IT
                     public void mouseUp(MouseEvent mouseEvent) {
 
                         /**
-                         * code to update a new video
+                         * code to create a new video
                          **/
 
                         MetaData metaData = new MetaData();
@@ -242,9 +169,7 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> implements IT
                         FilmController.getInstance().update(film);
 
                         // add to close the Form Window
-
                         shell.dispose ();
-                        //shell.layout(true);
 
 
                     }
@@ -272,9 +197,9 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> implements IT
                 shell.open ();
 
             }
-        });
 
-    }
+
+
 
     @Override
     public void dispose() {
